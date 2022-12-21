@@ -1,13 +1,13 @@
 import { CardBackProps } from "./types";
 
-const CardBack: React.FC<CardBackProps> = ({ className, cvc = "000", ...cardFrontProps }) => {
+const CardBack: React.FC<CardBackProps> = ({ className, cvc, ...cardFrontProps }) => {
     return (
         <div className={`shadow-md right-0 text-white flex flex-col bg-gray-200 rounded-lg w-[400px] h-[200px] ${className}`
         }>
             <div className="block h-12 my-5 w-full bg-gray-700" />
 
             <div className="text-right tracking-widest font-mono bg-gray-400 mx-5 py-1 px-2 rounded-md">
-                {cvc}
+                {cvc || "000"}
             </div>
             {/* <div className="flex items-center gap-3">
                 <div className="bg-white rounded-full w-10 h-10" />
