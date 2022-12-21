@@ -13,6 +13,8 @@ function App() {
 
         <CardFront className="invisible lg:visible absolute -right-24 bottom-1/2 my-5" />
         <CardBack className="invisible lg:visible absolute  -right-32 top-1/2 my-5 " />
+        <CardFront className="z-10 visible lg:invisible absolute left-5 -bottom-32" />
+        <CardBack className="visible lg:invisible absolute right-10 top-5 -bottom-18 " />
       </div>
       <div className="flex flex-col w-full h-full items-center justify-center">
 
