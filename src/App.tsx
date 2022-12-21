@@ -1,4 +1,3 @@
-import Card from "./components/Card/card.component"
 function App() {
 
   return (
