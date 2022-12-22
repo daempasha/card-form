@@ -1,11 +1,11 @@
 import create from 'zustand'
 
 interface CardState {
-    number: string;
-    name: string;
-    cvc: string;
-    expiryMonth: string;
-    expiryYear: string;
+    number?: string;
+    name?: string;
+    cvc?: string;
+    expiryMonth?: string;
+    expiryYear?: string;
     setNumber: (number: string) => void;
     setCvc: (cvc: string) => void;
     setName: (cvc: string) => void;
@@ -15,11 +15,11 @@ interface CardState {
 }
 
 export const useCardStore = create<CardState>((set) => ({
-    number: "0",
-    cvc: "",
-    name: "",
-    expiryMonth: "",
-    expiryYear: "",
+    number:undefined,
+    cvc:undefined,
+    name:undefined,
+    expiryMonth:undefined,
+    expiryYear:undefined,
     setNumber: (number: string) => set({ number }),
     setCvc: (cvc: string) => set({ cvc }),
     setName: (name: string) => set({ name }),

@@ -2,7 +2,7 @@ import { CardBackProps } from "./types";
 
 const CardBack: React.FC<CardBackProps> = ({ className, cvc, ...cardFrontProps }) => {
     return (
-        <div className={`shadow-md right-0 text-white flex flex-col bg-gray-200 rounded-lg w-[400px] h-[200px] ${className}`
+        <div className={`shadow-md text-white flex-col bg-gray-200 rounded-lg w-[400px] h-[200px] ${className}`
         }>
             <div className="block h-12 my-5 w-full bg-gray-700" />
 
