@@ -109,7 +109,7 @@ function App() {
                   maxLength: 3,
                   minLength: 3,
                   required: true
-                })} maxLength={3} onChange={event => setValue("cvc", event.target.value.replace(/[^0-9\\.]+/g, ""))} className={`border-[1px] px-3 py-2 border-gray-300 rounded-md outline-none focus:ring-2 ring-indigo-400`} placeholder="e.g 000" />
+                })} maxLength={3} onChange={event => setValue("cvc", event.target.value.replace(/[^0-9\\.]+/g, ""))} className={`w-full border-[1px] px-3 py-2 border-gray-300 rounded-md outline-none focus:ring-2 ring-indigo-400`} placeholder="e.g 000" />
 
               </div>
 
