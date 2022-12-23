@@ -11,9 +11,7 @@ import dayjs from "dayjs";
 function App() {
   const { state, setState } = useAppStore();
 
-  const { register, handleSubmit, watch, formState: { errors }, getValues, setValue } = useForm({
-
-  });
+  const { register, handleSubmit, watch, formState: { errors }, getValues, setValue } = useForm();
 
 
   const onSubmit = (values: FieldValues) => setState("submitted");
@@ -58,6 +56,11 @@ function App() {
     return currentDate.isBefore(expiryDate);
   }
 
+
+  const fillForm = () => {
+    const formFieldsToFill = [{ "field": "name", "value": "Jason Bourne" }, { "field": "number", "value": "4111111111111111" }, { "field": "expiryMonth", "value": "12" }, { "field": "expiryYear", "value": "24" }, { "field": "cvc", "value": "333" }]
+    formFieldsToFill.forEach((formField => setValue(formField.field, formField.value)))
+  }
 
   return (
     <div className="flex flex-col lg:flex-row h-screen w-screen">
@@ -154,7 +157,9 @@ function App() {
 
             {errors.monthYear && errors.monthYear.type === "validate" && <p className="text-sm text-red-600">Expiry date cannot be in the past</p>}
 
-            <Button>Submit</Button>
+            <Button onClick={handleSubmit(onSubmit)}>Submit</Button>
+            <button onClick={fillForm} className="text-indigo-600 underline underline-offset-4" type="button">Fill form</button>
+
           </div>
         </form>
         : <div className="flex flex-col w-full h-full items-center justify-center">
