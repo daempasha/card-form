@@ -7,7 +7,7 @@ import { useForm, FieldValues } from "react-hook-form";
 import Button from "./components/Button"
 import { useEffect } from "react"
 import { useAppStore } from "./store";
-
+import dayjs from "dayjs";
 function App() {
   const { state, setState } = useAppStore();
 
@@ -37,6 +37,27 @@ function App() {
     }
     return (oddSum + evenSum) % 10 === 0;
   }
+
+  const validateExpiryMonth = (value: string): boolean => {
+    return parseInt(value) <= 12;
+  }
+
+  const validateExpiryYear = (value: string): boolean => {
+    const year = dayjs().format("YY")
+
+    return parseInt(value) >= parseInt(year);
+  }
+
+  const validateMonthYear = (): boolean => {
+    const month = getValues("expiryMonth")
+    const year = getValues("expiryYear")
+
+    const expiryDate = dayjs(`${month} ${year}`, "MM YY")
+    const currentDate = dayjs()
+
+    return currentDate.isBefore(expiryDate);
+  }
+
 
   return (
     <div className="flex flex-col lg:flex-row h-screen w-screen">
@@ -92,14 +113,16 @@ function App() {
                 <input {...register("expiryMonth", {
                   maxLength: 2,
                   minLength: 2,
-                  required: true
+                  required: true,
+                  validate: validateExpiryMonth
                 })} maxLength={2} onChange={event => setValue("expiryMonth", event.target.value.replace(/[^0-9\\.]+/g, ""))} className={`w-14 border-[1px] px-3 py-2 border-gray-300 rounded-md outline-none focus:ring-2 ring-indigo-400`} placeholder="MM" />
                 {errors?.expiryMonth?.message && <p className="text-sm text-red-600">{`${errors.expiryMonth.message}`}</p>}
                 <span className="mx-1" />
                 <input {...register("expiryYear", {
                   maxLength: 2,
                   minLength: 2,
-                  required: true
+                  required: true,
+                  validate: validateExpiryYear
                 })} maxLength={2} onChange={event => setValue("expiryYear", event.target.value.replace(/[^0-9\\.]+/g, ""))} className={`w-14 border-[1px] px-3 py-2 border-gray-300 rounded-md outline-none focus:ring-2 ring-indigo-400`} placeholder="YY" />
               </div>
 
@@ -113,13 +136,23 @@ function App() {
 
               </div>
 
+              <input {...register("monthYear", {
+                validate: validateMonthYear
+              })} hidden />
+
             </div>
             {errors.expiryMonth && (errors.expiryMonth.type === "maxLength" || errors.expiryMonth.type === "minLength") && <p className="text-sm text-red-600">Expiry month must be 2 digits long</p>}
             {errors.expiryMonth && errors.expiryMonth.type === "required" && <p className="text-sm text-red-600">Expiry month cannot be empty</p>}
+            {errors.expiryMonth && errors.expiryMonth.type === "validate" && <p className="text-sm text-red-600">Expiry month cannot be higher than 12</p>}
+
             {errors.expiryYear && (errors.expiryYear.type === "maxLength" || errors.expiryYear.type === "minLength") && <p className="text-sm text-red-600">Expiry year must be 2 digits long</p>}
             {errors.expiryYear && errors.expiryYear.type === "required" && <p className="text-sm text-red-600">Expiry year cannot be empty</p>}
+
             {errors.cvc && (errors.cvc.type === "maxLength" || errors.cvc.type === "minLength") && <p className="text-sm text-red-600">CVC must be 3 digits long</p>}
             {errors.cvc && errors.cvc.type === "required" && <p className="text-sm text-red-600">CVC cannot be empty</p>}
+
+
+            {errors.monthYear && errors.monthYear.type === "validate" && <p className="text-sm text-red-600">Expiry date cannot be in the past</p>}
 
             <Button>Submit</Button>
           </div>
