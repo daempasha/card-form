@@ -82,7 +82,7 @@ function App() {
                   message: "Only alphabetical characters are permitted"
                 },
                 required: true
-              })} onChange={event => setValue("name", event.target.value.replace(/[^A-Za-z \\.]+/g, ""))} className={`w-[400px] border-[1px] px-3 py-2 border-gray-300 rounded-md outline-none focus:ring-2 ring-indigo-400`} placeholder="e.g. John Doe" />
+              })} onChange={event => setValue("name", event.target.value.replace(/[^A-Za-z \\.]+/g, ""))} className={`w-[400px] border-[1px] px-3 py-2 border-gray-300 rounded-md outline-none focus:ring-2 ring-indigo-400 ${errors.name && "border-red-300"}`} placeholder="e.g. John Doe" />
               {errors?.name?.message && <p className="text-sm text-red-600">{`${errors.name.message}`}</p>}
               {errors.name && errors.name.type === "required" && <p className="text-sm text-red-600">Name field cannot be empty</p>}
 
@@ -100,7 +100,7 @@ function App() {
                 required: true
 
               }
-              )} type="text" inputMode="numeric" maxLength={16} onChange={event => setValue("number", event.target.value.replace(/[^0-9\\.]+/g, ""))} className={`w-[400px] border-[1px] px-3 py-2 border-gray-300 rounded-md outline-none focus:ring-2 ring-indigo-400`} placeholder="e.g. 1234 5678 0000 0000" />
+              )} type="text" inputMode="numeric" maxLength={16} onChange={event => setValue("number", event.target.value.replace(/[^0-9\\.]+/g, ""))} className={`w-[400px] border-[1px] px-3 py-2 border-gray-300 rounded-md outline-none focus:ring-2 ring-indigo-400 ${errors.number && "border-red-300"}`} placeholder="e.g. 1234 5678 0000 0000" />
               {errors?.number?.type === "validate" && <p className="text-sm text-red-600">Card number is not valid</p>}
               {errors.number && (errors.number.type === "maxLength" || errors.number.type === "minLength") && <p className="text-sm text-red-600">Card number must be 16 digits long</p>}
               {errors.number && errors.number.type === "required" && <p className="text-sm text-red-600">Card number cannot be empty</p>}
@@ -115,7 +115,7 @@ function App() {
                   minLength: 2,
                   required: true,
                   validate: validateExpiryMonth
-                })} maxLength={2} onChange={event => setValue("expiryMonth", event.target.value.replace(/[^0-9\\.]+/g, ""))} className={`w-14 border-[1px] px-3 py-2 border-gray-300 rounded-md outline-none focus:ring-2 ring-indigo-400`} placeholder="MM" />
+                })} maxLength={2} onChange={event => setValue("expiryMonth", event.target.value.replace(/[^0-9\\.]+/g, ""))} className={`w-14 border-[1px] px-3 py-2 border-gray-300 rounded-md outline-none focus:ring-2 ring-indigo-400 ${errors.expiryMonth && "border-red-300"}`} placeholder="MM" />
                 {errors?.expiryMonth?.message && <p className="text-sm text-red-600">{`${errors.expiryMonth.message}`}</p>}
                 <span className="mx-1" />
                 <input {...register("expiryYear", {
@@ -123,7 +123,7 @@ function App() {
                   minLength: 2,
                   required: true,
                   validate: validateExpiryYear
-                })} maxLength={2} onChange={event => setValue("expiryYear", event.target.value.replace(/[^0-9\\.]+/g, ""))} className={`w-14 border-[1px] px-3 py-2 border-gray-300 rounded-md outline-none focus:ring-2 ring-indigo-400`} placeholder="YY" />
+                })} maxLength={2} onChange={event => setValue("expiryYear", event.target.value.replace(/[^0-9\\.]+/g, ""))} className={`w-14 border-[1px] px-3 py-2 border-gray-300 rounded-md outline-none focus:ring-2 ring-indigo-400 ${errors.expiryYear && "border-red-300"}`} placeholder="YY" />
               </div>
 
               <div className="flex-grow">
@@ -132,7 +132,7 @@ function App() {
                   maxLength: 3,
                   minLength: 3,
                   required: true
-                })} maxLength={3} onChange={event => setValue("cvc", event.target.value.replace(/[^0-9\\.]+/g, ""))} className={`w-full border-[1px] px-3 py-2 border-gray-300 rounded-md outline-none focus:ring-2 ring-indigo-400`} placeholder="e.g 000" />
+                })} maxLength={3} onChange={event => setValue("cvc", event.target.value.replace(/[^0-9\\.]+/g, ""))} className={`w-full border-[1px] px-3 py-2 border-gray-300 rounded-md outline-none focus:ring-2 ring-indigo-400 ${errors.cvc && "border-red-300"}`} placeholder="e.g 000" />
 
               </div>
 
