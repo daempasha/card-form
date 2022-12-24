@@ -64,18 +64,16 @@ function App() {
 
   return (
     <div className="flex flex-col lg:flex-row h-screen w-screen">
-      <div className="relative h-1/4 lg:h-full lg:w-1/2 bg-blue-500">
+      {/* <div className="relative h-1/4 lg:h-full lg:w-1/2 bg-blue-500">
         <img className="invisible lg:visible absolute left-0 top-0 h-full w-full" src={MainBgDesktop} />
         <img className="visible lg:invisible absolute left-0 top-0 h-full w-full" src={MainBgMobile} />
 
-        <CardFront watch={watch} className="transition-all hidden lg:flex absolute -right-24 bottom-1/2 my-5" />
-        <CardBack watch={watch} className="hidden lg:flex absolute -right-32 top-1/2 my-5 " />
-        <CardFront watch={watch} className="z-10 flex lg:hidden absolute left-5 -bottom-32" />
-        <CardBack watch={watch} className="flex lg:hidden absolute right-10 top-5 -bottom-18 " />
-      </div>
+        <CardFront watch={watch} className="z-10 transition-all flex relative md:-right-24 md:bottom-1/2" />
+        <CardBack watch={watch} className="flex absolute -right-32 top-1/2 my-5 " />
+      </div> */}
 
       {state === "form" ?
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-full h-full items-center justify-center">
+        <form onSubmit={handleSubmit(onSubmit)} className="mx-5 flex flex-col w-full h-full items-center justify-center">
           <div className="my-5">
             <div className="my-5">
               <p className="uppercase text-xs tracking-widest mb-2 text-indigo-900 font-bold">Cardholder name</p>
@@ -85,7 +83,7 @@ function App() {
                   message: "Only alphabetical characters are permitted"
                 },
                 required: true
-              })} onChange={event => setValue("name", event.target.value.replace(/[^A-Za-z \\.]+/g, ""))} className={`w-[400px] border-[1px] px-3 py-2 border-gray-300 rounded-md outline-none focus:ring-2 ring-indigo-400 ${errors.name && "border-red-300"}`} placeholder="e.g. John Doe" />
+              })} onChange={event => setValue("name", event.target.value.replace(/[^A-Za-z \\.]+/g, ""))} className={`md:w-[400px] border-[1px] px-3 py-2 border-gray-300 rounded-md outline-none focus:ring-2 ring-indigo-400 ${errors.name && "border-red-300"}`} placeholder="e.g. John Doe" />
               {errors?.name?.message && <p className="text-sm text-red-600">{`${errors.name.message}`}</p>}
               {errors.name && errors.name.type === "required" && <p className="text-sm text-red-600">Name field cannot be empty</p>}
 
@@ -103,14 +101,14 @@ function App() {
                 required: true
 
               }
-              )} type="text" inputMode="numeric" maxLength={16} onChange={event => setValue("number", event.target.value.replace(/[^0-9\\.]+/g, ""))} className={`w-[400px] border-[1px] px-3 py-2 border-gray-300 rounded-md outline-none focus:ring-2 ring-indigo-400 ${errors.number && "border-red-300"}`} placeholder="e.g. 1234 5678 0000 0000" />
+              )} type="text" inputMode="numeric" maxLength={16} onChange={event => setValue("number", event.target.value.replace(/[^0-9\\.]+/g, ""))} className={`md:w-[400px] border-[1px] px-3 py-2 border-gray-300 rounded-md outline-none focus:ring-2 ring-indigo-400 ${errors.number && "border-red-300"}`} placeholder="e.g. 1234 5678 0000 0000" />
               {errors?.number?.type === "validate" && <p className="text-sm text-red-600">Card number is not valid</p>}
               {errors.number && (errors.number.type === "maxLength" || errors.number.type === "minLength") && <p className="text-sm text-red-600">Card number must be 16 digits long</p>}
               {errors.number && errors.number.type === "required" && <p className="text-sm text-red-600">Card number cannot be empty</p>}
 
             </div>
 
-            <div className="my-5 flex gap-5">
+            <div className="my-5 flex flex-col md:flex-row gap-5">
               <div>
                 <p className="uppercase text-xs tracking-widest mb-2 text-indigo-900 font-bold">Exp. Date (MM/YY)</p>
                 <input {...register("expiryMonth", {
