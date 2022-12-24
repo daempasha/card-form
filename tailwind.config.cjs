@@ -5,7 +5,13 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
     "./src/*.{js,ts,jsx,tsx}"
   ], theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        mainBgDesktop: "url('bg-main-desktop.png')",
+        mainBgMobile: "url('bg-main-mobile.png')"
+
+      }
+    },
   },
   plugins: [],
 }

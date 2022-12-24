@@ -8,6 +8,7 @@ import Button from "./components/Button"
 import { useEffect } from "react"
 import { useAppStore } from "./store";
 import dayjs from "dayjs";
+import CardContainer from "./components/CardContainer"
 function App() {
   const { state, setState } = useAppStore();
 
@@ -64,16 +65,10 @@ function App() {
 
   return (
     <div className="flex flex-col lg:flex-row h-screen w-screen">
-      {/* <div className="relative h-1/4 lg:h-full lg:w-1/2 bg-blue-500">
-        <img className="invisible lg:visible absolute left-0 top-0 h-full w-full" src={MainBgDesktop} />
-        <img className="visible lg:invisible absolute left-0 top-0 h-full w-full" src={MainBgMobile} />
-
-        <CardFront watch={watch} className="z-10 transition-all flex relative md:-right-24 md:bottom-1/2" />
-        <CardBack watch={watch} className="flex absolute -right-32 top-1/2 my-5 " />
-      </div> */}
+      <CardContainer />
 
       {state === "form" ?
-        <form onSubmit={handleSubmit(onSubmit)} className="mx-5 flex flex-col w-full h-full items-center justify-center">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-full h-full items-center justify-center">
           <div className="my-5">
             <div className="my-5">
               <p className="uppercase text-xs tracking-widest mb-2 text-indigo-900 font-bold">Cardholder name</p>
