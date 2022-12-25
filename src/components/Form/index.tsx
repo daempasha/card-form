@@ -31,7 +31,7 @@ const Form: React.FC<FormProps> = ({ handleSubmit, setValue, formState: { errors
                         },
                         required: true
                     })} onChange={event => setValue("name", event.target.value.replace(/[^A-Za-z \\.]+/g, ""))} className={`md:w-[400px] border-[1px] px-3 py-2 border-gray-300 rounded-md outline-none focus:ring-2 ring-indigo-400 ${errors.name && "border-red-300"}`} placeholder="e.g. John Doe" />
-                    {errors?.name?.message && <ErrorMessage children={`${errors.name.message}`} />
+                    {errors?.name?.message && <ErrorMessage children={`${errors.name.message}`} />}
                     {errors.name && errors.name.type === "required" && <ErrorMessage children="Name field cannot be empty" />}
 
                 </div>
