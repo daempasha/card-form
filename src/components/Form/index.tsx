@@ -3,7 +3,9 @@ import Button from "@components/Button";
 import { useAppStore } from "@/store";
 import { isValidCardNumber, validateExpiryMonth, validateExpiryYear, validateMonthYear } from "./helper";
 import { ErrorMessage } from "./ErrorMessage";
-import Label from "./Label";
+import FormLabel from "./FormLabel";
+import FormItem from "./FormItem";
+import LinkButton from "@components/LinkButton";
 
 interface FormProps extends UseFormReturn<FieldValues, any> {
 
@@ -23,8 +25,8 @@ const Form: React.FC<FormProps> = ({ handleSubmit, setValue, formState: { errors
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-full h-full items-center justify-center">
             <div className="my-5">
-                <div className="my-5">
-                    <Label children="Cardholder name" />
+                <FormItem className="my-5">
+                    <FormLabel children="Cardholder name" />
                     <input {...register("name", {
                         pattern: {
                             value: /^[ a-zA-Z]+$/,
@@ -35,11 +37,12 @@ const Form: React.FC<FormProps> = ({ handleSubmit, setValue, formState: { errors
                     {errors?.name?.message && <ErrorMessage children={`${errors.name.message}`} />}
                     {errors.name && errors.name.type === "required" && <ErrorMessage children="Name field cannot be empty" />}
 
-                </div>
+                </FormItem>
 
 
-                <div className="my-5">
-                    <Label children="Card number" />
+                <FormItem className="my-5">
+
+                    <FormLabel children="Card number" />
                     <input {...register("number", {
                         validate: isValidCardNumber,
                         pattern: /[0-9]*/,
@@ -52,12 +55,12 @@ const Form: React.FC<FormProps> = ({ handleSubmit, setValue, formState: { errors
                     {errors?.number?.type === "validate" && <ErrorMessage children="Card number is not valid" />}
                     {errors.number && (errors.number.type === "maxLength" || errors.number.type === "minLength") && <ErrorMessage children="Card number must be 16 digits long" />}
                     {errors.number && errors.number.type === "required" && <ErrorMessage children="Card number cannot be empty" />}
+                </FormItem>
 
-                </div>
 
-                <div className="my-5 flex flex-col md:flex-row gap-5">
-                    <div>
-                        <Label children="Exp. Date (MM/YY)" />
+                <div className="flex flex-col md:flex-row gap-5">
+                    <FormItem>
+                        <FormLabel children="Exp. Date (MM/YY)" />
                         <input {...register("expiryMonth", {
                             maxLength: 2,
                             minLength: 2,
@@ -72,22 +75,21 @@ const Form: React.FC<FormProps> = ({ handleSubmit, setValue, formState: { errors
                             required: true,
                             validate: validateExpiryYear
                         })} maxLength={2} onChange={event => setValue("expiryYear", event.target.value.replace(/[^0-9\\.]+/g, ""))} className={`w-14 border-[1px] px-3 py-2 border-gray-300 rounded-md outline-none focus:ring-2 ring-indigo-400 ${errors.expiryYear && "border-red-300"}`} placeholder="YY" />
-                    </div>
+                    </FormItem>
 
-                    <div className="flex-grow">
-                        <Label children="CVC" />
+                    <FormItem className="flex-grow">
+                        <FormLabel children="CVC" />
                         <input {...register("cvc", {
                             maxLength: 3,
                             minLength: 3,
                             required: true
                         })} maxLength={3} onChange={event => setValue("cvc", event.target.value.replace(/[^0-9\\.]+/g, ""))} className={`w-full border-[1px] px-3 py-2 border-gray-300 rounded-md outline-none focus:ring-2 ring-indigo-400 ${errors.cvc && "border-red-300"}`} placeholder="e.g 000" />
 
-                    </div>
+                    </FormItem>
 
                     <input {...register("monthYear", {
                         validate: () => validateMonthYear(getValues("expiryMonth"), getValues("expiryYear"))
                     })} hidden />
-
                 </div>
                 {errors.expiryMonth && (errors.expiryMonth.type === "maxLength" || errors.expiryMonth.type === "minLength") && <ErrorMessage children="Expiry month must be 2 digits long" />}
                 {errors.expiryMonth && errors.expiryMonth.type === "required" && <ErrorMessage children="Expiry month cannot be empty" />}
@@ -100,7 +102,7 @@ const Form: React.FC<FormProps> = ({ handleSubmit, setValue, formState: { errors
 
 
                 <Button onClick={handleSubmit(onSubmit)}>Submit</Button>
-                <button onClick={fillForm} className="text-indigo-600 underline underline-offset-4" type="button">Fill form</button>
+                <LinkButton onClick={fillForm}>Fill form</LinkButton>
 
             </div>
         </form >
