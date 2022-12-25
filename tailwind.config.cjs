@@ -8,8 +8,8 @@ module.exports = {
     extend: {
       backgroundImage: {
         mainBgDesktop: "url('images/bg-main-desktop.png')",
-        mainBgMobile: "url('images/bg-main-mobile.png')"
-
+        mainBgMobile: "url('images/bg-main-mobile.png')",
+        cardFront: "url('images/bg-card-front.png')"
       }
     },
   },
