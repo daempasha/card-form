@@ -6,6 +6,7 @@ import { ErrorMessage } from "./ErrorMessage";
 import FormLabel from "./FormLabel";
 import FormItem from "./FormItem";
 import LinkButton from "@components/LinkButton";
+import { DEFAULT_FORM_DATA } from "./data";
 
 interface FormProps extends UseFormReturn<FieldValues, any> {
 
@@ -18,8 +19,7 @@ const Form: React.FC<FormProps> = ({ handleSubmit, setValue, formState: { errors
     const onSubmit = (values: FieldValues) => setState("submitted");
 
     const fillForm = () => {
-        const formFieldsToFill = [{ "field": "name", "value": "Jason Bourne" }, { "field": "number", "value": "4111111111111111" }, { "field": "expiryMonth", "value": "12" }, { "field": "expiryYear", "value": "24" }, { "field": "cvc", "value": "333" }]
-        formFieldsToFill.forEach((formField => setValue(formField.field, formField.value)))
+        DEFAULT_FORM_DATA.forEach((formField => setValue(formField.field, formField.value)))
     }
 
     return (

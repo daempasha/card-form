@@ -10,9 +10,6 @@ function App() {
   const state = useAppStore(state => state.state)
   const formProps = useForm();
 
-
-
-
   return (
     <div className="flex flex-col lg:flex-row h-screen w-screen">
       <CardContainer watch={formProps.watch} />

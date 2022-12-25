@@ -1,0 +1,1 @@
+export const DEFAULT_FORM_DATA = [{ "field": "name", "value": "Jason Bourne" }, { "field": "number", "value": "4111111111111111" }, { "field": "expiryMonth", "value": "12" }, { "field": "expiryYear", "value": "24" }, { "field": "cvc", "value": "333" }] 
