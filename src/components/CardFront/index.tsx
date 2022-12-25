@@ -5,7 +5,7 @@ import { CardFrontProps } from "./types";
 
 const CardFront: React.FC<CardFrontProps> = ({ watch, className = "", ...cardFrontProps }) => {
     return (
-        <div className={`${RESPONSIVE_CARD} ${BASE_CARD} flex-col p-5 bg-cardFront bg-cover overflow-hidden flex z-10 lg:top-1/4 xl:top-1/3 2xl:top-1/3  transition-all absolute -bottom-10 lg:-right-28 xl:-right-16 lg:bottom-1/2 md:top-1/2 right-1/3  bg-indigo-500   ${className}`
+        <div className={`${RESPONSIVE_CARD} ${BASE_CARD}  p-5 bg-cardFront bg-cover overflow-hidden  z-10 lg:top-1/4 xl:top-1/3 2xl:top-1/3    -bottom-10 lg:-right-28 xl:-right-16 lg:bottom-1/2 md:top-1/2 right-1/3  bg-indigo-500   ${className}`
         } {...cardFrontProps}>
 
             <div className="flex items-center gap-1 md:gap-3">
