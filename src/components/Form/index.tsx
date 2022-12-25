@@ -8,15 +8,11 @@ import FormItem from "./FormItem";
 import LinkButton from "@components/LinkButton";
 import { DEFAULT_FORM_DATA } from "./data";
 
-interface FormProps extends UseFormReturn<FieldValues, any> {
-
-}
-
-const Form: React.FC<FormProps> = ({ handleSubmit, setValue, formState: { errors }, register, getValues }) => {
+const Form: React.FC<UseFormReturn<FieldValues, any>> = ({ handleSubmit, setValue, formState: { errors }, register, getValues }) => {
     const { state, setState } = useAppStore();
 
 
-    const onSubmit = (values: FieldValues) => setState("submitted");
+    const onSubmit = () => setState("submitted");
 
     const fillForm = () => {
         DEFAULT_FORM_DATA.forEach((formField => setValue(formField.field, formField.value)))
