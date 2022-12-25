@@ -99,9 +99,10 @@ const Form: React.FC<FormProps> = ({ handleSubmit, setValue, formState: { errors
                 {errors.monthYear && errors.monthYear.type === "validate" && <ErrorMessage children="Expiry date cannot be in the past" />}
 
 
-                <b                <Button onClick={handleSubmit(onSubmit)}>Submit</Button>utton onClick={fillForm} className="text-indigo-600 underline underline-offset-4" type="button">Fill form</button>
+                <Button onClick={handleSubmit(onSubmit)}>Submit</Button>
+                <button onClick={fillForm} className="text-indigo-600 underline underline-offset-4" type="button">Fill form</button>
 
-        </div>
+            </div>
         </form >
     )
 }
