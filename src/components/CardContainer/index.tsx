@@ -1,6 +1,6 @@
 import { FieldValues, UseFormWatch } from "react-hook-form";
-import CardBack from "../CardBack";
-import CardFront from "../CardFront";
+import CardBack from "@components/CardBack";
+import CardFront from "@components/CardFront";
 
 interface CardContainerProps {
     watch: UseFormWatch<FieldValues>

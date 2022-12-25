@@ -1,4 +1,4 @@
-import BgCardFront from "./bg-card-front.png"
+import BgCardFront from "@images/bg-card-front.png"
 import { addSpace, padString } from "./helper";
 import { CardFrontProps } from "./types";
 

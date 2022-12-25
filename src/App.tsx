@@ -1,14 +1,10 @@
-import CardBack from "./components/CardBack"
-import CardFront from "./components/CardFront"
-import MainBgDesktop from "./bg-main-desktop.png"
-import MainBgMobile from "./bg-main-mobile.png"
-import IconComplete from "./icon-complete.svg"
 import { useForm, FieldValues } from "react-hook-form";
-import Button from "./components/Button"
-import { useEffect } from "react"
+import Button from "@components/Button"
 import { useAppStore } from "./store";
 import dayjs from "dayjs";
-import CardContainer from "./components/CardContainer"
+import CardContainer from "@components/CardContainer"
+import Success from "@components/Success";
+
 function App() {
   const { state, setState } = useAppStore();
 
@@ -155,11 +151,7 @@ function App() {
 
           </div>
         </form>
-        : <div className="flex flex-col w-full h-full items-center justify-center">
-          <img className="mb-5" src={IconComplete} />
-          <p className="text-2xl uppercase text-purple-900  tracking-wider font-mono">Thank you!</p>
-          <p className="text-gray-500 font-semibold mt-2 ">We've added your card details.</p>
-        </div>}
+        : <Success />}
     </div>
   )
 }

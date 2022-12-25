@@ -1,6 +1,6 @@
 import { useForm, FieldValues } from "react-hook-form";
-import Button from "../Button";
-import Input from "../Input";
+import Button from "@components/Button";
+import Input from "@components/Input";
 
 const Form = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
