@@ -1,4 +1,4 @@
-import { useForm, FieldValues } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useAppStore } from "./store";
 import CardContainer from "@components/CardContainer"
 import Success from "@components/Success";
