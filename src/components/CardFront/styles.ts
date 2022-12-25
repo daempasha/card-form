@@ -1,0 +1,1 @@
+export const RESPONSIVE_CARD_FRONT = "-bottom-10 right-1/3 md:top-1/2 lg:bottom-1/2 lg:top-1/4 lg:-right-28 xl:top-1/3 xl:-right-16 2xl:top-1/3 "

@@ -1,0 +1,1 @@
+export const RESPONSIVE_CARD_BACK = "bottom-4 top-2 left-1/3 lg:top-auto lg:-right-32 lg:bottom-1/3 xl:bottom-1/4 2xl:bottom-1/3 2xl:left-auto 2xl:-right-28"
