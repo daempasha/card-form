@@ -3,6 +3,7 @@ import Button from "@components/Button";
 import { useAppStore } from "@/store";
 import { isValidCardNumber, validateExpiryMonth, validateExpiryYear, validateMonthYear } from "./helper";
 import { ErrorMessage } from "./ErrorMessage";
+import Label from "./Label";
 
 interface FormProps extends UseFormReturn<FieldValues, any> {
 
@@ -23,7 +24,7 @@ const Form: React.FC<FormProps> = ({ handleSubmit, setValue, formState: { errors
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-full h-full items-center justify-center">
             <div className="my-5">
                 <div className="my-5">
-                    <p className="uppercase text-xs tracking-widest mb-2 text-indigo-900 font-bold">Cardholder name</p>
+                    <Label children="Cardholder name" />
                     <input {...register("name", {
                         pattern: {
                             value: /^[ a-zA-Z]+$/,
@@ -38,8 +39,7 @@ const Form: React.FC<FormProps> = ({ handleSubmit, setValue, formState: { errors
 
 
                 <div className="my-5">
-
-                    <p className="uppercase text-xs tracking-widest mb-2 text-indigo-900 font-bold">Card Number</p>
+                    <Label children="Card number" />
                     <input {...register("number", {
                         validate: isValidCardNumber,
                         pattern: /[0-9]*/,
@@ -57,7 +57,7 @@ const Form: React.FC<FormProps> = ({ handleSubmit, setValue, formState: { errors
 
                 <div className="my-5 flex flex-col md:flex-row gap-5">
                     <div>
-                        <p className="uppercase text-xs tracking-widest mb-2 text-indigo-900 font-bold">Exp. Date (MM/YY)</p>
+                        <Label children="Exp. Date (MM/YY)" />
                         <input {...register("expiryMonth", {
                             maxLength: 2,
                             minLength: 2,
@@ -75,7 +75,7 @@ const Form: React.FC<FormProps> = ({ handleSubmit, setValue, formState: { errors
                     </div>
 
                     <div className="flex-grow">
-                        <p className="uppercase text-xs tracking-widest mb-2 text-indigo-900 font-bold">CVC</p>
+                        <Label children="CVC" />
                         <input {...register("cvc", {
                             maxLength: 3,
                             minLength: 3,
