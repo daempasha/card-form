@@ -65,7 +65,7 @@ function App() {
 
   return (
     <div className="flex flex-col lg:flex-row h-screen w-screen">
-      <CardContainer />
+      <CardContainer watch={watch} />
 
       {state === "form" ?
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-full h-full items-center justify-center">
