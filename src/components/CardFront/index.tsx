@@ -1,10 +1,11 @@
+import { RESPONSIVE_CARD } from "@/styles";
 import { addSpace, padString } from "./helper";
 import { CardFrontProps } from "./types";
 
 
 const CardFront: React.FC<CardFrontProps> = ({ watch, className = "", ...cardFrontProps }) => {
     return (
-        <div className={` flex-col p-5 bg-cardFront bg-cover overflow-hidden flex z-10 lg:top-1/4 xl:top-1/3 2xl:top-1/3  transition-all absolute -bottom-10 lg:-right-28 xl:-right-16 lg:bottom-1/2 md:top-1/2 right-1/3 shadow-lg text-white bg-indigo-500 rounded-lg w-[200px] h-[100px] md:w-[400px] md:h-[200px] lg:w-[300px] lg:h-[150px]  2xl:w-[400px] 2xl:h-[200px]   ${className}`
+        <div className={` flex-col p-5 bg-cardFront bg-cover overflow-hidden flex z-10 lg:top-1/4 xl:top-1/3 2xl:top-1/3  transition-all absolute -bottom-10 lg:-right-28 xl:-right-16 lg:bottom-1/2 md:top-1/2 right-1/3 shadow-lg text-white bg-indigo-500 rounded-lg ${RESPONSIVE_CARD} ${className}`
         } {...cardFrontProps}>
 
             <div className="flex items-center gap-1 md:gap-3">
